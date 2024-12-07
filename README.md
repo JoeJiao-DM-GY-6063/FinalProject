@@ -17,3 +17,11 @@ The rope and the tie respond dynamically, simulating real-life movements.
 Next week I'll be plugging into an Arduino to implement button control and test it out.
 
 
+# 20241207 Tug-of-War Game: p5.js + Arduino
+update：I suddenly realized that I didn't need to make separate characters and ropes, I could just combine them all into one whole for better control. So I redid the gif by combining all the original separate materials all into one.
+
+Features：
+Interactive Gameplay: Use two physical buttons connected to Arduino to control the movement of the "tow" (tug-of-war rope).
+Victory Condition: The game ends when the "tow" moves beyond a certain threshold, indicating a win for either the red or yellow team.
+Animated Elements: Animated tug-of-war elements and spectators react to the game progress.
+
