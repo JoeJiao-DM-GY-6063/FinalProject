@@ -40,9 +40,9 @@ function draw() {
 
   //check win
   if (offsetX <= -winrange) {
-    endGame("Red Team Wins!");
+    endGame("Red Wins!");
   } else if (offsetX >= winrange) {
-    endGame("Yellow Team Wins!");
+    endGame("Yellow Wins!");
   }
 
   if (mSerial.opened() && mSerial.availableBytes() > 0) {
