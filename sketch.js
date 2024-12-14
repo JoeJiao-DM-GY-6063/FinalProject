@@ -6,12 +6,15 @@ let tieshake = 0;
 let mSerial;
 let connectButton;
 
+let bgm; // 背景音乐
+
 function preload() {
   bg = loadImage("background.png"); 
   audience1 = loadImage("aud1.gif");
   audience2 = loadImage("aud2.gif"); 
   tie = loadImage("tie.png");
-  tow = loadImage("tow.gif");//mainplayer
+  tow = loadImage("tow.gif"); //mainplayer
+  bgm = loadSound("bgm.mp3");
 }
 
 function setup() {
@@ -20,7 +23,6 @@ function setup() {
 
   winrange = width / 15; 
 
-  
   mSerial = createSerial();
   connectButton = createButton("Connect");
   connectButton.position(width / 2 - 50, height / 2 - 20);
@@ -28,7 +30,6 @@ function setup() {
 }
 
 function draw() {
-
   background(255);
   image(bg, width / 2, height / 2, width, height);
   image(audience1, width / 4, height / 1.24, 600, 140);
@@ -69,18 +70,25 @@ function receiveSerial() {
     let leftButton = int(buttons[0]);
     let rightButton = int(buttons[1]);
 
-    //no hold
+    //no hold button
     if (leftButton === 1 && lastLeftButton === 0) {
       offsetX -= 10;
+      playBgm();
     } else if (rightButton === 1 && lastRightButton === 0) {
       offsetX += 10;
+      playBgm();
     }
 
     lastLeftButton = leftButton;
     lastRightButton = rightButton;
-    }
   }
+}
 
+function playBgm() {
+  if (!bgm.isPlaying()) {
+    bgm.loop();
+  }
+}
 
 function endGame(message) {
   noLoop();
@@ -88,10 +96,14 @@ function endGame(message) {
   textAlign(CENTER, CENTER);
   fill(255, 0, 0);
   text(message, width / 2, height / 4);
-  setTimeout(resetGame, 3000); //3s restart
+  setTimeout(resetGame, 7000); //7s restart
 }
 
 function resetGame() {
   offsetX = 0;
+  if (bgm.isPlaying()) {
+    bgm.stop();
+  }
+  playBgm(); //restart bgm
   loop();
 }
