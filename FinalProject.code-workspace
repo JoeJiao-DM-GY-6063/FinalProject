@@ -1,0 +1,15 @@
+{
+	"folders": [
+		{
+			"name": "FinalProject",
+			"path": "."
+		},
+		{
+			"name": "Final_project",
+			"path": "../../../Desktop/creative coding/Arduino/Final_project"
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "FinalProject"
+	}
+}
